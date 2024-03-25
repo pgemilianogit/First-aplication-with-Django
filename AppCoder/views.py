@@ -7,6 +7,10 @@ from django.http import HttpResponse
 # Create your views here.
 #4 Definir las views
 
+#Responder en la platilla renderizada
+def inicio(request):
+    return render(request, "padre.html")
+
 def alta_curso(request, nombre):
     #contructor de la clase, un objeto mas lo que hereda
     curso = Curso(nombre=nombre, camada= 234512)

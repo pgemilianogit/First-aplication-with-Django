@@ -56,7 +56,8 @@ ROOT_URLCONF = 'Clase18.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #Agregar en DIRS ruta de template para cargarlos
+        'DIRS': ["C:/Users/panfu/Music/Curso Python CoderHouse/Clase18/AppCoder/template"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
