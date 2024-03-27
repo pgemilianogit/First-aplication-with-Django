@@ -2,6 +2,7 @@ from django.shortcuts import render
 #Importando el modelo dar de alta uno nuevo importando la clase curso
 from AppCoder.models import Curso
 from django.http import HttpResponse
+from django.template import loader
 
 
 # Create your views here.
@@ -19,3 +20,18 @@ def alta_curso(request, nombre):
     #Dar de alta los registros en la base de datos para insertarlos desde la interfaz
     texto=f"Se guardo en la DB el curso: {curso.nombre} {curso.camada}"
     return HttpResponse(texto)
+
+def ver_cursos(request):
+    #Como ver la base de datos, return lista
+    cursos = Curso.objects.all()
+    dicc ={"cursos": cursos}
+    plantilla = loader.get_template("cursos.html")
+    #Loader simpl todo el problema de como entrar al template, donde ya definimos
+    documento=plantilla.render(dicc)
+    return HttpResponse(documento)
+
+#PROCESO:
+
+#crear un diccionario con una sola propiedad (cursos) y el valor sera el conjunto de dicc
+#teniendo todos los cursos cargar la plantilla  get_template metodo del motor de plantillas apuntando en settings
+#render de la plantilla mandando el diccionario, pasa todo dinamismo, retorna todos los cursos
